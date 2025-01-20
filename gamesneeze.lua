@@ -3058,11 +3058,10 @@ do
                     --
                     options_title.Text = ("User ID : %s\nDisplay Name : %s\nName : %s\nHealth : %s/%s"):format(Selection[1].UserId, Selection[1].DisplayName ~= "" and Selection[1].DisplayName or Selection[1].Name, Selection[1].Name, "100", "100")
                     --
-                    local success, imagedata = pcall(function()
-                        return game:GetService("Players"):GetUserThumbnailAsync(Selection[1].UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
-                    end)
+                    local imagedata = game:GetService("Players"):GetUserThumbnailAsync(Selection[1].UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size100x100)
+
                     --
-                    if success and playerList:GetSelection() == Selection then
+                    if playerList:GetSelection() == Selection then
                         options_avatar.Data = imagedata
                         options_loadingtext.Text = ""
                     end
@@ -4898,7 +4897,7 @@ do
                                 Color = "darkcontrast"
                             }
                             --
-                            local dropdown_open_bar = utility:Create("Frame", {Vector2.new(0, (((dropdown_open_scroll.Size.Y - ((max / #dropdown.options) * dropdown_open_scroll.Size.Y)) / (#dropdown.options - max)) * dropdown.scrollindex), dropdown_open_scroll}, {
+                            local dropdown_open_bar = utility:Create("Frame", {Vector2.new(0, (((dropdown_open_scroll.Size.Y - ((max / #dropdown.options) * dropdown_open_scroll.Size.Y)) / (#dropdown.options - max)) * dropdown.scrollindex)), dropdown_open_scroll}, {
                                 Size = utility:Size(1, 0, (max / #dropdown.options), 0, dropdown_open_scroll),
                                 Position = utility:Position(0, 0, 0, (((dropdown_open_scroll.Size.Y - ((max / #dropdown.options) * dropdown_open_scroll.Size.Y)) / (#dropdown.options - max)) * dropdown.scrollindex), dropdown_open_scroll),
                                 Color = theme.accent,
